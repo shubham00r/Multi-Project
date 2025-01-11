@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Form2 from "./Form2";
 import Form3 from "./Form3";
 import FinalPage from "./FinalPage";
+import Congratulations from "./Congratulations";
 
 const Form = () => {
   const [count, SetCount] = useState(0);
@@ -23,6 +24,7 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    SetCount(count + 1);
     console.log("Final Form Data:", formData);
   };
 
@@ -72,8 +74,8 @@ const Form = () => {
               : ""}
           </h1>
           <p className="pt-2">
-            Please provide your Personal detail so we can get to know your
-            better
+            {count < 4 &&
+              "Please provide your Personal detail so we can get to know your better"}
           </p>
           <form onSubmit={handleSubmit}>
             {count == 0 && (
@@ -154,6 +156,7 @@ const Form = () => {
             {count == 3 && (
               <FinalPage formData={formData} SetFormData={SetFormData} />
             )}
+            {count == 4 && <Congratulations />}
           </form>
         </div>
         <div
@@ -163,37 +166,38 @@ const Form = () => {
               : "flex items-center justify-between"
           }`}
         >
-          {count != 0 && count != 3 && (
+          {count != 0 && count != 3 && count != 4 && (
             <div className="py-2 mt-24 text-center bg-orange-500 rounded-lg w-28">
               <button onClick={handleBack} className="text-lg font-medium ">
                 Go Back
               </button>
             </div>
           )}
-          <div>
-            {count == 3 ? (
-              <div
-                className={`py-2 mt-24 text-center bg-orange-500 rounded-lg  w-28`}
-              >
-                <button
-                  type="submit"
-                  // onClick={() => SetCount(count + 1)}
-                  onClick={handleSubmit}
-                  className="text-lg font-medium "
+          {count < 4 && (
+            <div>
+              {count == 3 ? (
+                <div
+                  className={`py-2 mt-24 text-center bg-orange-500 rounded-lg  w-28`}
                 >
-                  Submit
-                </button>
-              </div>
-            ) : (
-              <div
-                className={`py-2 mt-24 text-center bg-orange-500 rounded-lg w-28`}
-              >
-                <button onClick={handleNext} className="text-lg font-medium ">
-                  Next Step
-                </button>
-              </div>
-            )}
-          </div>
+                  <button
+                    type="submit"
+                    onClick={handleSubmit}
+                    className="text-lg font-medium "
+                  >
+                    Submit
+                  </button>
+                </div>
+              ) : (
+                <div
+                  className={`py-2 mt-24 text-center bg-orange-500 rounded-lg w-28`}
+                >
+                  <button onClick={handleNext} className="text-lg font-medium ">
+                    Next Step
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>
