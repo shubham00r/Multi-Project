@@ -6,12 +6,12 @@ const Search = () => {
   const data = [
     {
       id: 1,
-      img: "https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
+      img: "https://images.pexels.com/photos/3751675/pexels-photo-3751675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       name: "Animal",
     },
     {
       id: 2,
-      img: "https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      img: "https://images.pexels.com/photos/3751675/pexels-photo-3751675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       name: "Animal",
     },
     {
