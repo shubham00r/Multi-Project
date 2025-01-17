@@ -11,7 +11,7 @@ const Search = () => {
     },
     {
       id: 2,
-      img: "https://images.pexels.com/photos/3751675/pexels-photo-3751675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      img: "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       name: "Animal",
     },
     {
