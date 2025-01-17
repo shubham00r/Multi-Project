@@ -4,6 +4,7 @@ import Star from "./components/star/Star";
 import Check from "./components/Checked/Check";
 import Form from "./components/multi_form/Form";
 import Search from "./components/Filter_Search/Search";
+import ExpenseTracker from "./components/Expensive/ExpensiveTracker";
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       {/* <div className="h-screen bg-pink-200">
         <Form />
       </div> */}
-      <Search />
+      <ExpenseTracker />
+      {/* <Search /> */}
     </div>
   );
 }
