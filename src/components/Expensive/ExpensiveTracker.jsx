@@ -25,9 +25,15 @@ const ExpenseTracker = () => {
   };
 
   useEffect(() => {
+    localStorage.setItem("Expensive", JSON.stringify(data));
     const totalAmount = data.reduce((sum, item) => sum + item.expensive, 0);
     SetTotal(totalAmount);
   }, [data]);
+  // useEffect(() => {
+  //   let item = localStorage.getItem("Expensive");
+
+  //   SetData(JSON.parse(item));
+  // }, []);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -72,17 +78,33 @@ const ExpenseTracker = () => {
 
         {/* Expense List */}
         <div className="mt-6">
-          <h2 className="mb-2 text-lg font-semibold text-gray-800">Expenses</h2>
+          <div className="flex items-center justify-between">
+            <h2 className="mb-2 text-lg font-semibold text-gray-800">
+              Expenses
+            </h2>
+            {data.length >= 2 && (
+              <button
+                onClick={() => SetData([])}
+                className="px-4 py-2 font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700"
+              >
+                Clear All
+              </button>
+            )}
+          </div>
           <div>
-            {data.map((item, i) => {
+            {data?.map((item, i) => {
               return (
                 <div key={i}>
                   <ul className="divide-y divide-gray-200">
                     <li className="flex items-center justify-between py-2">
-                      <span className="text-gray-700">{item.name}</span>
+                      <span className="text-lg font-medium text-gray-700">
+                        {item.name}
+                      </span>
 
                       <div className="flex items-center gap-1">
-                        <span className="text-gray-500">{item.expensive}</span>
+                        <span className="text-lg font-medium text-gray-500">
+                          {item.expensive}
+                        </span>
                         <MdDelete
                           onClick={() => handleDelete(item.id)}
                           className="cursor-pointer"
@@ -95,7 +117,8 @@ const ExpenseTracker = () => {
             })}
           </div>
         </div>
-        <h1 className="text-xl font-medium text-center">
+
+        <h1 className="pt-2 text-xl font-medium text-center">
           Total Expensive {total}
         </h1>
       </div>
