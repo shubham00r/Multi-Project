@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { MdDelete } from "react-icons/md";
 
+const expensive = "Expensive";
 const ExpenseTracker = () => {
   const [Text, SetText] = useState("");
   const [amount, SetAmount] = useState();
-  const [data, SetData] = useState([]);
+  const [data, SetData] = useState(() => {
+    let item = JSON.parse(localStorage.getItem(expensive));
+    if (!item) return [];
+
+    return item;
+  });
   const [total, SetTotal] = useState("");
 
   const handleExpensive = () => {
@@ -25,14 +31,18 @@ const ExpenseTracker = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem("Expensive", JSON.stringify(data));
+    localStorage.setItem(expensive, JSON.stringify(data));
     const totalAmount = data.reduce((sum, item) => sum + item.expensive, 0);
     SetTotal(totalAmount);
   }, [data]);
-  // useEffect(() => {
-  //   let item = localStorage.getItem("Expensive");
 
-  //   SetData(JSON.parse(item));
+  // useEffect(() => {
+  //   console.log(item);
+  //   if (item) {
+  //     SetData(item);
+  //   } else {
+  //     SetData([]);
+  //   }
   // }, []);
 
   return (
@@ -119,7 +129,7 @@ const ExpenseTracker = () => {
         </div>
 
         <h1 className="pt-2 text-xl font-medium text-center">
-          Total Expensive {total}
+          Total Expensive {data.length >= 1 && total}
         </h1>
       </div>
     </div>
