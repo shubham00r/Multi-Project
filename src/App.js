@@ -15,13 +15,18 @@ import RandomCar from "./components/Random/RandomCar";
 import Contact from "./components/Contact/Contact";
 import Sidebars from "./components/Sidebars";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Optione from "./components/Optione/Optione";
+import Coupon from "./components/Coupon/Coupon";
 function App() {
   return (
     <div className="flex">
+      {/* */}
+
       <Sidebars />
       <Routes>
         <Route path="/" element={<h1>Home Page</h1>} />
-        <Route path="/star" element={<Star />} />
+        <Route path="/options" element={<Optione />} />
+        <Route path="/coupon" element={<Coupon />} />
         <Route path="/check" element={<Check />} />
         <Route path="/form" element={<Form />} />
         <Route path="/expense-tracker" element={<ExpenseTracker />} />

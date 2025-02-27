@@ -19,7 +19,7 @@ export default function Sidebars() {
     <div className="flex">
       {/* Sidebar */}
       <div
-        className={`bg-gray-900 text-white h-screen p-4 transition-all duration-300 ${
+        className={`bg-gray-900 text-white h-screen p-4   transition-all duration-300 ${
           isOpen ? "w-48" : "w-16"
         }`}
       >
@@ -103,6 +103,20 @@ export default function Sidebars() {
           >
             <Star size={20} />
             {isOpen && <span className="ml-2">Star</span>}
+          </Link>
+          <Link
+            to="/coupon"
+            className="flex items-center p-1 rounded hover:bg-gray-700"
+          >
+            <Settings size={20} />
+            {isOpen && <span className="ml-2">Coupon</span>}
+          </Link>
+          <Link
+            to="/options"
+            className="flex items-center p-1 rounded hover:bg-gray-700"
+          >
+            <Star size={20} />
+            {isOpen && <span className="ml-2">Options</span>}
           </Link>
         </nav>
       </div>
